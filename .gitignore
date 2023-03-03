@@ -1,0 +1,17 @@
+/*.gem
+/*.html
+/.bundle/
+/.idea/
+/.ruby-gemset
+/.ruby-version
+/.yardoc
+/.yardoc/
+/Gemfile.lock
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/rdoc/
+/spec/reports/
+/tmp/
+/vendor/
