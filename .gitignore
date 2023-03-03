@@ -6,6 +6,7 @@
 /.ruby-version
 /.yardoc
 /.yardoc/
+/.vscode/
 /Gemfile.lock
 /_yardoc/
 /coverage/
