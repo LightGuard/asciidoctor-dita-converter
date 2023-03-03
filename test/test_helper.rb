@@ -1,4 +1,6 @@
-$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
-require "asciidoctor/dita/converter"
+# frozen_string_literal: true
 
-require "minitest/autorun"
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'asciidoctor/dita/converter'
+
+require 'minitest/autorun'

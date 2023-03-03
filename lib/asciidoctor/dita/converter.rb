@@ -1,4 +1,6 @@
-require "asciidoctor/dita/converter/version"
+# frozen_string_literal: true
+
+require 'asciidoctor/dita/converter/version'
 
 module Asciidoctor
   module Dita
