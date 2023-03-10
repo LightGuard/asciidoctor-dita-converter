@@ -3,7 +3,8 @@ require:
 - rubocop-rake
 AllCops:
   TargetRubyVersion: 2.5
-Gemspec/DateAssignment:
+  NewCops: enable
+Gemspec/DeprecatedAttributeAssignment:
   Enabled: true
 Gemspec/RequireMFA:
   Enabled: true
@@ -27,7 +28,6 @@ Layout/HeredocIndentation:
   Enabled: false # reason: makes it harder to understand what indentation is significant
 Layout/IndentationWidth:
   Enabled: true
-  IgnoredPatterns: ['^module Asciidoctor$'] # FIXME keep and remove indentation in CLI, Timings, and API, or remove and fix indentation
 Layout/LeadingCommentSpace:
   Enabled: false # reason: this is just nitpicky
 Layout/LineEndStringConcatenationIndentation:
@@ -162,18 +162,18 @@ Metrics/BlockNesting:
 Metrics/ClassLength:
   Enabled: false
 Metrics/CyclomaticComplexity:
-  Enabled: false
+  Enabled: true
 Metrics/MethodLength:
-  Enabled: false
+  Enabled: true
 Metrics/ModuleLength:
-  Enabled: false
+  Enabled: true
 Metrics/ParameterLists:
-  Max: 10
-  MaxOptionalParameters: 10
+  Max: 5
+  MaxOptionalParameters: 3
 Metrics/PerceivedComplexity:
-  Enabled: false
+  Enabled: true
 Minitest/AssertInDelta:
-  Enabled: false
+  Enabled: true
 Minitest/AssertionInLifecycleHook:
   Enabled: true
 Minitest/AssertKindOf:
@@ -424,7 +424,6 @@ Style/SpecialGlobalVars:
   EnforcedStyle: use_perl_names
 Style/StderrPuts:
   Enabled: true
-  Exclude: [ lib/asciidoctor/cli/options.rb ]
 Style/StringChars:
   Enabled: true
 Style/StringConcatenation:

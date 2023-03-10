@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 SimpleCov.start do
   load_profile 'test_frameworks'
   coverage_dir ENV['COVERAGE_REPORTS'] || 'tmp/coverage'
@@ -5,7 +7,6 @@ SimpleCov.start do
     require 'simplecov-csv'
     formatter SimpleCov::Formatter::CSVFormatter
   else
-    #formatter SimpleCov::Formatter::MultiFormatter[SimpleCov::Formatter::HTMLFormatter, SimpleCov::Formatter::CSVFormatter]
     formatter SimpleCov::Formatter::HTMLFormatter
   end
 end
