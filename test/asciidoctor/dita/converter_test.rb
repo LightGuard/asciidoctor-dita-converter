@@ -2,8 +2,12 @@
 
 require 'test_helper'
 
-class Asciidoctor::Dita::ConverterTest < Minitest::Test
-  def test_that_it_has_a_version_number
-    refute_nil ::Asciidoctor::Dita::Converter::VERSION
+module Asciidoctor
+  module Dita
+    class ConverterTest < DitaConverterTestBase
+      def test_admonition
+        assert_equal asciidoctor_output, expected_output
+      end
+    end
   end
 end

@@ -1,12 +1,11 @@
 ---
 include:
 - "**/*.rb"
-- "asciidoctor"
 exclude:
-- spec/**/*
 - test/**/*
+- data/**/*
 - vendor/**/*
-- ".bundle/**/*"
+- node_modules/**/*
 require: []
 domains: []
 reporters:
@@ -20,4 +19,4 @@ formatter:
     extra_args: []
 require_paths: []
 plugins: []
-max_files: 5000
+max_files: 7500

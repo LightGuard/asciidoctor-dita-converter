@@ -6,7 +6,7 @@ require 'asciidoctor/dita/converter/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'asciidoctor-dita-converter'
-  spec.version       = Asciidoctor::Dita::Converter::VERSION
+  spec.version       = Asciidoctor::Dita::VERSION
   spec.authors       = ['Jason Porter']
   spec.email         = ['lightguard.jp@gmail.com']
 
@@ -39,20 +39,25 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # Building
-  spec.add_development_dependency 'bundler', '~> 1.17'
-  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'bundler', '~> 2.4.6'
+  #spec.add_development_dependency 'debug', '~> 1.7'
+  spec.add_development_dependency 'rake', '~> 13.0'
 
   # Testing
-  spec.add_development_dependency 'asciidoctor-doctest', '= 2.0.0.beta.7'
-  spec.add_development_dependency 'concurrent-ruby', '~> 1.2.2'
   spec.add_development_dependency 'minitest', '~> 5.0'
-  spec.add_development_dependency 'tilt', '~> 2.1.0'
+  spec.add_development_dependency 'minitest-hooks', '~> 1.5'
+  #spec.add_development_dependency 'slim', '~> 5.1'
 
   # Other dev tools
+  spec.add_development_dependency 'prettier_print', '~> 1.2'
   spec.add_development_dependency 'rubocop', '~> 1.47'
   spec.add_development_dependency 'rubocop-minitest', '~> 0.28.0'
   spec.add_development_dependency 'rubocop-performance', '~> 1.16'
   spec.add_development_dependency 'rubocop-rake', '~> 0.6.0'
+  spec.add_development_dependency 'solargraph', '~> 0.48'
+  spec.add_development_dependency 'syntax_tree', '~> 6.0'
+  spec.add_development_dependency 'syntax_tree-haml', '~> 4.0'
+  spec.add_development_dependency 'syntax_tree-rbs', '~> 1.0.0'
 
   # Required deps
   spec.add_runtime_dependency 'anyway_config', '>= 2.3.1'

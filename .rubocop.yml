@@ -1,3 +1,5 @@
+inherit_from:
+- node_modules/@prettier/plugin-ruby/rubocop.yml
 require:
 - rubocop-minitest
 - rubocop-rake

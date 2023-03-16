@@ -2,24 +2,39 @@
 
 require 'asciidoctor'
 require 'asciidoctor/converter'
+require 'erb'
+
 require_relative 'converter/mapping_config'
 
 module Asciidoctor
   module Dita
-    # Asciidoctor converter to generate topic dita files.
-    class Converter < Asciidoctor::Converter::Base
-      def initialize
+    #
+    # Asciidoctor converter to convert AsciiDoc syntax into a DITA topic
+    #
+    class Converter < ::Asciidoctor::Converter::Base
+      register_for 'dita'
+
+      def initialize *opts
         super
         outfilesuffix '.dita'
 
         # TODO add in the configuration stuff
+        @config = MappingConfig.new
       end
 
+      #
+      # Convert the document node
+      #
+      # @param [AbstractNode] node Asciidoc AST node
+      #
+      # @return [String] converted output
+      #
       def convert_document node
+        puts "INSIDE convert_document"
         <<~TOPIC.chomp
           <?xml version="1.0" encoding="utf-8"?>
-          #{mapping}
-          <topic id="#{node.id} xml:lang="en-us">
+          #{mapping_for :doctype}
+          <topic id="#{node.id}" xml:lang="en-us">
           <title>#{node.doctitle}</title>
           <body>
           #{node.content}
@@ -29,6 +44,7 @@ module Asciidoctor
       end
 
       def convert_section node
+        puts "INSIDE convert_section"
         <<~SECTION.chomp
           <section id="#{node.id}">
           <title>#{node.title}</title>
@@ -181,12 +197,19 @@ module Asciidoctor
       private
 
       def mapping_for context
-        MappingConfig.send context
+        @config ||= Asciidoctor::Dita::MappingConfig.new
+
+        @config.send context
       end
 
       def simple_mapping node, context
+        puts "INSIDE simple_mapping for context: #{context}"
         mapping = mapping_for context
-        %(#{mapping[:before]}#{node.content}#{mapping[:after]})
+        puts "MAPPING: before :-: #{mapping['before']} :-: after :-: #{mapping['after']} :-:"
+        template = %(#{mapping['before']}#{node.content}#{mapping['after']})
+        output = ERB.new(template).result(binding)
+        puts "ERB RESULT: #{output}"
+        output
       end
     end
   end
