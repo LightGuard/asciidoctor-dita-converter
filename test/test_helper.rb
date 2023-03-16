@@ -27,3 +27,20 @@ class DitaConverterTestBase < Minitest::Test
     @expected_output = (REXML::XPath.first REXML::Document.new(@full_output), '//body/*').to_s
   end
 end
+
+module Asciidoctor
+  module Dita
+    module Testing
+      def create_adoc_based_tests
+        adoc_files = Pathname.new 'test/examples/asciidoc'
+        adoc_files.children.each do |adoc|
+          example_name = File.basename adoc, '.adoc'
+
+          define_method %(test_#{example_name}) do
+            assert_equal asciidoctor_output, expected_output
+          end
+        end
+      end
+    end
+  end
+end

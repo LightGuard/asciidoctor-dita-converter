@@ -167,6 +167,7 @@ Metrics/CyclomaticComplexity:
   Enabled: true
 Metrics/MethodLength:
   Enabled: true
+  Max: 50
 Metrics/ModuleLength:
   Enabled: true
 Metrics/ParameterLists:
