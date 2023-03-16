@@ -203,13 +203,9 @@ module Asciidoctor
       end
 
       def simple_mapping node, context
-        puts "INSIDE simple_mapping for context: #{context}"
         mapping = mapping_for context
-        puts "MAPPING: before :-: #{mapping['before']} :-: after :-: #{mapping['after']} :-:"
         template = %(#{mapping['before']}#{node.content}#{mapping['after']})
-        output = ERB.new(template).result(binding)
-        puts "ERB RESULT: #{output}"
-        output
+        ERB.new(template).result binding
       end
     end
   end

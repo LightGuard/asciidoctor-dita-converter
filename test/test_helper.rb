@@ -19,11 +19,11 @@ class DitaConverterTestBase < Minitest::Test
     test_name = /^test_(.*)/.match(name)[1]
 
     adoc_path = Pathname.new "test/examples/asciidoc/#{test_name}.adoc"
-    @asciidoctor_output = Asciidoctor.convert adoc_path.cleanpath, safe: :safe, backend: 'dita', converter: ::Asciidoctor::Dita::Converter
+    @asciidoctor_output = REXML::Document.new(Asciidoctor.convert(adoc_path.cleanpath, safe: :safe, backend: 'dita', converter: ::Asciidoctor::Dita::Converter)).to_s
     
     # TODO load the full file, then run an xpath on it to pull the node we want
     dita_path = Pathname.new "test/examples/dita/#{test_name}.dita"
     @full_output = dita_path.read
-    @expected_output = REXML::XPath.first REXML::Document.new(@full_output), '//body/*'
+    @expected_output = (REXML::XPath.first REXML::Document.new(@full_output), '//body/*').to_s
   end
 end

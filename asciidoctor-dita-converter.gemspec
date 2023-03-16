@@ -40,7 +40,7 @@ Gem::Specification.new do |spec|
 
   # Building
   spec.add_development_dependency 'bundler', '~> 2.4.6'
-  #spec.add_development_dependency 'debug', '~> 1.7'
+  spec.add_development_dependency 'debug', '~> 1.7'
   spec.add_development_dependency 'rake', '~> 13.0'
 
   # Testing
