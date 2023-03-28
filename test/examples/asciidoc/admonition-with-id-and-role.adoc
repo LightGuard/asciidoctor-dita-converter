@@ -1,0 +1,3 @@
+// .note-with-id-and-role
+[#note-1.yellow]
+NOTE: This is a note with id and role.

@@ -14,8 +14,7 @@ module Asciidoctor
       # Values in the config mapping can be ERB templates
       #
       attr_config \
-        doctype: '<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">',
-        admonition: { before: %(<note type="<%= node.attr('name') %>">), after: '</note>' },
+        template_location: 'templates',
         audio: { before: '', after: '' },
         colist: { before: '', after: '' },
         dlist: { before: '', after: '' },
@@ -23,7 +22,6 @@ module Asciidoctor
         embedded: { before: '', after: '' },
         example: { before: '', after: '' },
         floating_title: { before: '', after: '' },
-        image: { before: %(<image href="<%= node.attr 'href' %>"><alt><%= node.attr 'alt' %></alt>), after: '</image>' },
         inline_anchor: { before: '', after: '' },
         inline_break: { before: '', after: '' },
         inline_button: { before: '', after: '' },
@@ -40,8 +38,6 @@ module Asciidoctor
         open: { before: '', after: '' },
         outline: { before: '', after: '' },
         page_break: { before: '', after: '' },
-        paragraph: { before: '<p>', after: '</p>' },
-        preamble: { before: '<abstract>', after: '<abstract>' },
         quote: { before: '<lq>', after: '</lq>' },
         # Not supporting config for section
         sidebar: { before: '', after: '' },

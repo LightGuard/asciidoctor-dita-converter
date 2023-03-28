@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="" xml:lang="en-us">
+<title></title>
+<body>
+<note type="note"><p>This is a note with complex content.</p>
+<ul><li>It contains a list.</li></ul>
+</note>
+</body>
+</topic>

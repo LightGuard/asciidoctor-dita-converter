@@ -1,0 +1,2 @@
+// .tip
+TIP: This is a tip.

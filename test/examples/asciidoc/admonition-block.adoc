@@ -1,0 +1,7 @@
+// .note-block
+[NOTE]
+====
+This is a note with complex content.
+
+* It contains a list.
+====
