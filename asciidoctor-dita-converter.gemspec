@@ -45,11 +45,8 @@ Gem::Specification.new do |spec|
 
   # Testing
   spec.add_development_dependency 'minitest', '~> 5.0'
-  spec.add_development_dependency 'minitest-hooks', '~> 1.5'
-  #spec.add_development_dependency 'slim', '~> 5.1'
 
   # Other dev tools
-  spec.add_development_dependency 'ox', '~> 2.14'
   spec.add_development_dependency 'prettier_print', '~> 1.2'
   spec.add_development_dependency 'rubocop', '~> 1.47'
   spec.add_development_dependency 'rubocop-minitest', '~> 0.28.0'

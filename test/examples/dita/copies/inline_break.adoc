@@ -1,0 +1,19 @@
+<!--
+// .plus-sign
+Rubies are red, +
+Topazes are blue.
+
+// .hardbreaks
+[%hardbreaks]
+Ruby is red.
+Java is black.
+-->
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="" xml:lang="en-us">
+<title></title>
+<body>
+<!-- TODO item being tested here -->
+</body>
+</topic>
+

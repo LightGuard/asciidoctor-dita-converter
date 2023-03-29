@@ -1,0 +1,16 @@
+<!--
+// .basic
+++++
+<p>Allons-y!</p>
+image:tiger.png[]
+++++
+-->
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="" xml:lang="en-us">
+<title></title>
+<body>
+<!-- TODO item being tested here -->
+</body>
+</topic>
+

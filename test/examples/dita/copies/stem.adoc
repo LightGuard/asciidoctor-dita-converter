@@ -1,0 +1,39 @@
+<!--
+// .asciimath
+:stem: asciimath
+[stem]
+++++
+sqrt(4) = 2
+++++
+
+// .latexmath
+:stem: latexmath
+[stem]
+++++
+C = \alpha + \beta Y^{\gamma} + \epsilon
+++++
+
+// .with-title
+:stem:
+[stem]
+.Equation
+++++
+sqrt(4) = 2
+++++
+
+// .with-id-and-role
+:stem:
+[stem, id="sqrt", role="right"]
+++++
+sqrt(4) = 2
+++++
+-->
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="" xml:lang="en-us">
+<title></title>
+<body>
+<!-- TODO item being tested here -->
+</body>
+</topic>
+

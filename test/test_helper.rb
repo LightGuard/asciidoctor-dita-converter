@@ -9,7 +9,6 @@ require 'rexml/document'
 
 require 'asciidoctor'
 require 'asciidoctor/dita/converter'
-require 'ox'
 
 class DitaConverterTestBase < Minitest::Test
   attr_reader :asciidoctor_output
@@ -26,19 +25,12 @@ class DitaConverterTestBase < Minitest::Test
     raise NotImplementedError, 'No adoc file created' unless adoc_path.exist?
     raise NotImplementedError, 'No dita file created' unless dita_path.exist?
 
-    Ox.default_options = { effort: :tolerant, skip: :skip_white }
-
     output = Asciidoctor.convert adoc_path.cleanpath, safe: :safe, backend: 'dita', converter: ::Asciidoctor::Dita::Converter
     @asciidoctor_output = (REXML::Document.new output, ignore_whitespace_nodes: :all, compress_whitespace: :all).root
 
     @full_output = REXML::Document.new dita_path.read, ignore_whitespace_nodes: :all, compress_whitespace: :all
     @expected_output = REXML::XPath.first @full_output, '/topic/body/*'
 
-    ## Ox
-    #@asciidoctor_output = Ox.load Asciidoctor.convert(adoc_path.cleanpath, safe: :safe, backend: 'dita', converter: ::Asciidoctor::Dita::Converter)
-    
-    #@full_output = dita_path.read
-    #@expected_output = Ox.load(@full_output).topic.body.nodes.first
     #Minitest::Test.make_my_diffs_pretty!
   end
 end
