@@ -1,1 +1,1 @@
-<ul <%= common_attributes node.id %>><% node.items.each do |item| %><li><%= item.text %><% if item.blocks? %><%= item.content %><% end %></li><% end %></ul>
+<ul <%= common_attributes node.id %>><% node.items.each do |item| %><li><%= item.text.strip -%><%= item.content if item.blocks? -%></li><% end %></ul>

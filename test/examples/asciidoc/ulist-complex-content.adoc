@@ -4,7 +4,6 @@
 Additional paragraphs or blocks are adjoined by putting
 a list continuation on a line adjacent to both blocks.
 +
-list continuation:: a plus sign (`{plus}`) on a line by itself
 
 * A literal paragraph does not require a list continuation.
 

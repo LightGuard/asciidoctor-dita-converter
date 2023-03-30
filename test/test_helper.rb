@@ -4,8 +4,10 @@ $:.unshift File.expand_path('../lib', __dir__)
 
 require 'pathname'
 require 'minitest/autorun'
+require 'pry'
 require 'rexml'
 require 'rexml/document'
+require 'simple_xml'
 
 require 'asciidoctor'
 require 'asciidoctor/dita/converter'
@@ -26,36 +28,39 @@ class DitaConverterTestBase < Minitest::Test
     raise NotImplementedError, 'No dita file created' unless dita_path.exist?
 
     output = Asciidoctor.convert adoc_path.cleanpath, safe: :safe, backend: 'dita', converter: ::Asciidoctor::Dita::Converter
-    @asciidoctor_output = (REXML::Document.new output, ignore_whitespace_nodes: :all, compress_whitespace: :all).root
+    #@asciidoctor_output = (REXML::Document.new output, ignore_whitespace_nodes: :all, compress_whitespace: :all).simplify
+    @asciidoctor_output = (REXML::Document.new output, compress_whitespace: :all).simplify
 
-    @full_output = REXML::Document.new dita_path.read, ignore_whitespace_nodes: :all, compress_whitespace: :all
-    @expected_output = REXML::XPath.first @full_output, '/topic/body/*'
+    #@full_output = REXML::Document.new dita_path.read, ignore_whitespace_nodes: :all, compress_whitespace: :all
+    @full_output = REXML::Document.new dita_path.read, compress_whitespace: :all
+    #@expected_output = REXML::XPath.first @full_output, '/topic/body/*'
+    @expected_output = @full_output.simplify('/topic/body')
 
     #Minitest::Test.make_my_diffs_pretty!
   end
 end
 
 # Create an eql? (or ==) method for REXML::Element
-module REXML
-  class Element
-    def == other
-      #puts "\nEquality testing"
-      #p "#{other.name} - #{name}"
-      #p "#{other.attributes} - #{attributes}"
-      #p self.class == other.class 
-      #p name == other.name 
-      #p attributes == other.attributes
-      #p children == other.children
-      #p "#{children} - #{other.children}"
-      #puts "\n"
-      self.class == other.class && name == other.name && attributes == other.attributes && children == other.children
-    end
-
-    def inspect
-      p "<#{name} #{attributes}>#{children}</#{name}>"
-    end
-  end
-end
+#module REXML
+#  class Element
+#    def == other
+#      #puts "\nEquality testing"
+#      #p "#{other.name} - #{name}"
+#      #p "#{other.attributes} - #{attributes}"
+#      #p self.class == other.class 
+#      #p name == other.name 
+#      #p attributes == other.attributes
+#      #p children == other.children
+#      #p "#{children} - #{other.children}"
+#      #puts "\n"
+#      self.class == other.class && name == other.name && attributes == other.attributes && children == other.children
+#    end
+#
+#    def inspect
+#      p "<#{name} #{attributes}>#{children}</#{name}>"
+#    end
+#  end
+#end
 
 module Asciidoctor
   module Dita

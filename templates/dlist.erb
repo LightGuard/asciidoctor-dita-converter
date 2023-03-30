@@ -1,8 +1,1 @@
-<dl <%= common_attributes node.id %>>
-    <% node.items.each do |terms, dd| %>
-        <dlentry>
-            <dt><%= terms.text %></dt>
-            <dd><%= dd.text %></dd>
-        </dlentry>
-    <% end %>
-</dl>
+<dl <%= common_attributes node.id %>><% node.items.each do |terms, dd| %><dlentry><% terms.each do |dt| %><dt><%= dt.text.strip %></dt><% end %><dd><%= dd.text %></dd></dlentry><% end %></dl>

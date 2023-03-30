@@ -1,9 +1,5 @@
-// .basic
-Asciidoctor:: An implementation of the AsciiDoc processor in Ruby.
-Asciidoc::
-  A text document format for writing notes, documentation, articles, books,
-  ebooks, slideshows, web pages, man pages and blogs.
-
+<?xml version="1.0" encoding="utf-8"?>
+<!--
 // .basic-block
 About::
 * An implementation of the AsciiDoc processor in Ruby.
@@ -97,3 +93,21 @@ Cloud Providers::
   IaaS:::
     . Amazon EC2
     . Rackspace
+-->
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="" xml:lang="en-us">
+<title></title>
+<body>
+<dl>
+<dlentry>
+<dt>Asciidoctor</dt>
+<dd>An implementation of the AsciiDoc processor in Ruby.</dd>
+</dlentry>
+<dlentry>
+<dt>Asciidoc</dt>
+<dd>A text document format for writing notes, documentation, articles, books, ebooks, slideshows, web pages, man pages and blogs.</dd>
+</dlentry>
+</dl>
+</body>
+</topic>
+

@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/LightGuard/asciidoctor-dita-converter'
   spec.license       = 'MIT'
 
-  spec.required_ruby_version = '>= 2.5'
+  spec.required_ruby_version = '>= 2.7'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the "allowed_push_host"
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -47,11 +47,15 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'minitest', '~> 5.0'
 
   # Other dev tools
+  spec.add_development_dependency 'nokogiri', '~> 1.14'
   spec.add_development_dependency 'prettier_print', '~> 1.2'
+  spec.add_development_dependency 'pry', '~> 0.14'
+  spec.add_development_dependency 'pry-byebug', '~> 3.10'
   spec.add_development_dependency 'rubocop', '~> 1.47'
   spec.add_development_dependency 'rubocop-minitest', '~> 0.28.0'
   spec.add_development_dependency 'rubocop-performance', '~> 1.16'
   spec.add_development_dependency 'rubocop-rake', '~> 0.6.0'
+  spec.add_development_dependency 'simple-xml', '~> 1.0'
   spec.add_development_dependency 'solargraph', '~> 0.48'
   spec.add_development_dependency 'syntax_tree', '~> 6.0'
   spec.add_development_dependency 'syntax_tree-haml', '~> 4.0'

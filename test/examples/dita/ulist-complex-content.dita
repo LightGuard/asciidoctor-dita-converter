@@ -1,27 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
-<topic id="" xml:lang="en-us">
+<topic id="check" xml:lang="en-us">
 <title></title>
 <body>
-<!-- 
-* Every list item has at least one paragraph of content,
-  which may be wrapped, even using a hanging indent.
-+
-Additional paragraphs or blocks are adjoined by putting
-a list continuation on a line adjacent to both blocks.
-+
-list continuation:: a plus sign (`{plus}`) on a line by itself
-
-* A literal paragraph does not require a list continuation.
-
- $ gem install asciidoctor
--->
 <ul>
-<li>Every list item has at least one paragraph of content, which may be wrapped, even using a hanging indent.
-<p>Additional paragraphs or blocks are adjoined by putting a list continuation o na line adjacent to both blocks</p>
-<dl></dl>
-<p>A literal paragraph does not require a list continuation.</p>
-<!-- code block -->
+<li>Every list item has at least one paragraph of content, 
+which may  be wrapped, even using a hanging indent. 
+<p>Additional paragraphs or blocks are adjoined by putting a list continuation on a line adjacent to both blocks.</p>
+</li>
+<li>
+A literal paragraph does not require a list continuation.
+<codeblock>$ gem install asciidoctor</codeblock>
 </li>
 </ul>
 </body>

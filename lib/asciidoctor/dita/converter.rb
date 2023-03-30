@@ -23,13 +23,14 @@ module Asciidoctor
         @config = MappingConfig.new
       end
 
-      def respond_to_missing?
+      def respond_to_missing? method_name, include_private = false
+        p "NEED METHOD MISSING FOR: #{method_name}"
         true
       end
 
-      def method_missing(m, *args, &block)
+      def method_missing(method_name, *args, &block)
         # TODO get the asciidoctor logger
-        template_name = m.to_s.sub 'convert_', ''
+        template_name = method_name.to_s.sub 'convert_', ''
 
         template_file = Pathname.new(@config.send('template_location')).join "#{template_name}.erb"
         raise StandardError, "Template not found: #{template_file}" unless template_file.exist?
