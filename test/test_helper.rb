@@ -28,13 +28,10 @@ class DitaConverterTestBase < Minitest::Test
     raise NotImplementedError, 'No dita file created' unless dita_path.exist?
 
     output = Asciidoctor.convert adoc_path.cleanpath, safe: :safe, backend: 'dita', converter: ::Asciidoctor::Dita::Converter
-    #@asciidoctor_output = (REXML::Document.new output, ignore_whitespace_nodes: :all, compress_whitespace: :all).simplify
-    @asciidoctor_output = (REXML::Document.new output, compress_whitespace: :all).simplify
+    @asciidoctor_output = (REXML::Document.new output, ignore_whitespace_nodes: :all, compress_whitespace: :all).simplify
 
-    #@full_output = REXML::Document.new dita_path.read, ignore_whitespace_nodes: :all, compress_whitespace: :all
-    @full_output = REXML::Document.new dita_path.read, compress_whitespace: :all
-    #@expected_output = REXML::XPath.first @full_output, '/topic/body/*'
-    @expected_output = @full_output.simplify('/topic/body')
+    @full_output = REXML::Document.new dita_path.read, ignore_whitespace_nodes: :all, compress_whitespace: :all
+    @expected_output = @full_output.simplify '/topic/body'
 
     #Minitest::Test.make_my_diffs_pretty!
   end

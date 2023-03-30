@@ -47,7 +47,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'minitest', '~> 5.0'
 
   # Other dev tools
-  spec.add_development_dependency 'nokogiri', '~> 1.14'
   spec.add_development_dependency 'prettier_print', '~> 1.2'
   spec.add_development_dependency 'pry', '~> 0.14'
   spec.add_development_dependency 'pry-byebug', '~> 3.10'
