@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<map xml:lang="en-us">
+    <title>Document Title</title>
+    <topicref href="#_section_1" format="html" navtitle="Section 1" scope="peer"></topicref>
+    <topicref href="#_section_2" format="html" navtitle="Section 2" scope="peer">
+        <topicref href="#_section_2_1" format="html" navtitle="Section 2.1">
+            <topicref href="#_section_2_1_1" format="html" navtitle="Section 2.1.1"></topicref>
+        </topicref>
+    </topicref>
+    <topicref href="#section-3" format="html" navtitle="Section 3" scope="peer"></topicref>
+</map>

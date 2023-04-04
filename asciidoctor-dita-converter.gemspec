@@ -48,8 +48,6 @@ Gem::Specification.new do |spec|
 
   # Other dev tools
   spec.add_development_dependency 'prettier_print', '~> 1.2'
-  spec.add_development_dependency 'pry', '~> 0.14'
-  spec.add_development_dependency 'pry-byebug', '~> 3.10'
   spec.add_development_dependency 'rubocop', '~> 1.47'
   spec.add_development_dependency 'rubocop-minitest', '~> 0.28.0'
   spec.add_development_dependency 'rubocop-performance', '~> 1.16'

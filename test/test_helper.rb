@@ -4,7 +4,6 @@ $:.unshift File.expand_path('../lib', __dir__)
 
 require 'pathname'
 require 'minitest/autorun'
-require 'pry'
 require 'rexml'
 require 'rexml/document'
 require 'simple_xml'
@@ -19,7 +18,11 @@ class DitaConverterTestBase < Minitest::Test
 
   def setup
     super
-    test_name = /^test_(.*)/.match(name)[1]
+
+    # outline will be handled differently
+    return if name.include? 'test_outline'
+
+    test_name = /^test_(.*)/.match(name)[1].gsub '_', '-'
 
     adoc_path = Pathname.new "test/examples/asciidoc/#{test_name}.adoc"
     dita_path = Pathname.new "test/examples/dita/#{test_name}.dita"
@@ -29,6 +32,10 @@ class DitaConverterTestBase < Minitest::Test
 
     output = Asciidoctor.convert adoc_path.cleanpath, safe: :safe, backend: 'dita', converter: ::Asciidoctor::Dita::Converter
     @asciidoctor_output = (REXML::Document.new output, ignore_whitespace_nodes: :all, compress_whitespace: :all).simplify
+
+    # Remove the ditamap if it's there
+    ditamap = Pathname.new 'output.ditamap'
+    ditamap.delete if ditamap.exist?
 
     @full_output = REXML::Document.new dita_path.read, ignore_whitespace_nodes: :all, compress_whitespace: :all
     @expected_output = @full_output.simplify '/topic/body'
@@ -65,7 +72,13 @@ module Asciidoctor
       def create_adoc_based_tests
         adoc_files = Pathname.new 'test/examples/asciidoc'
         adoc_files.children.each do |adoc|
+          next if File.directory? adoc
+
           example_name = File.basename adoc, '.adoc'
+          example_name.gsub! '-', '_'
+
+          # Outline is handled differently
+          next if example_name.include? 'outline_'
 
           define_method %(test_#{example_name}) do
             assert_equal expected_output, asciidoctor_output

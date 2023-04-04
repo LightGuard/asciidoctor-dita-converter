@@ -20,6 +20,7 @@
       "request": "launch",
       "script": "${file}",
       "args": [],
+      "useBundler": true,
       "askParameters": true
     },
     {

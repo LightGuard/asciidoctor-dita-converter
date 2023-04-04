@@ -24,7 +24,7 @@ module Asciidoctor
       end
 
       def respond_to_missing? method_name, include_private = false
-        p "NEED METHOD MISSING FOR: #{method_name}"
+        #p "NEED METHOD MISSING FOR: #{method_name}"
         true
       end
 
@@ -40,6 +40,45 @@ module Asciidoctor
         b.local_variable_set :node, args[0]
 
         ERB.new(template_contents, trim_mode: '<>-').result b
+      end
+
+      def convert_outline node, opts = {}
+        return unless node.sections?
+
+        # Thanks Dan, from asciidoctor source
+        sectnumlevel = (opts[:sectnumlevels] || node.document.attributes['sectnumlevels'] || 3).to_i
+        result = []
+
+        node.sections.each do |section|
+          slevel = section.level
+          stitle = section.captioned_title || section.title || ''
+          link = "##{section.id}"
+
+          if slevel <= sectnumlevel
+            child_toc = convert_outline section, {seclevel: slevel}
+            result << %(<topicref href="#{link}" format="html" navtitle="#{stitle}" scope="peer">#{child_toc}</topicref>)
+          end
+        end
+
+        # At section 2 (or 1 or 3, this is true.... what to do)
+        if node.parent.nil?
+          if node.embedded?
+            filename = Pathname.new 'output.ditamap'
+          else
+            doc_path = Pathname.new node.attributes['docfile']
+            filename = Pathname.new(doc_path.dirname).join("#{doc_path.basename.to_s.gsub(/\.adoc/, '')}.ditamap")
+          end
+          result.unshift %(<?xml version="1.0" encoding="utf-8"?>\n<map xml:lang="en-us">\n<title>#{node.title}</title>)
+          result << %(</map>)
+
+          File.write filename, result.join("\n")
+        else
+          result.join "\n"
+        end
+      end
+
+      def convert_toc node, opts = {}
+        convert_outline node, opts
       end
 
       def common_attributes id, role = nil, reftext = nil
