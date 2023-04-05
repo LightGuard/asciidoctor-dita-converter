@@ -46,7 +46,7 @@ module Asciidoctor
         return unless node.sections?
 
         # Thanks Dan, from asciidoctor source
-        sectnumlevel = (opts[:sectnumlevels] || node.document.attributes['sectnumlevels'] || 3).to_i
+        toclevels = (opts[:toclevels] || node.document.attributes['toclevels'] || 3).to_i
         result = []
 
         node.sections.each do |section|
@@ -54,13 +54,12 @@ module Asciidoctor
           stitle = section.captioned_title || section.title || ''
           link = "##{section.id}"
 
-          if slevel <= sectnumlevel
+          if slevel <= toclevels
             child_toc = convert_outline section, {seclevel: slevel}
             result << %(<topicref href="#{link}" format="html" navtitle="#{stitle}" scope="peer">#{child_toc}</topicref>)
           end
         end
 
-        # At section 2 (or 1 or 3, this is true.... what to do)
         if node.parent.nil?
           if node.embedded?
             filename = Pathname.new 'output.ditamap'
