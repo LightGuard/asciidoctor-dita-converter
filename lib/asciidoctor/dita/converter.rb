@@ -65,8 +65,7 @@ module Asciidoctor
           if node.embedded?
             filename = Pathname.new 'output.ditamap'
           else
-            doc_path = Pathname.new node.attributes['docfile']
-            filename = Pathname.new(doc_path.dirname).join("#{doc_path.basename.to_s.gsub(/\.adoc/, '')}.ditamap")
+            filename = Pathname.new(node.attributes['outfile'].gsub(/\.dita$/, '.ditamap'))
           end
           result.unshift %(<?xml version="1.0" encoding="utf-8"?>\n<map xml:lang="en-us">\n<title>#{node.title}</title>)
           result << %(</map>)
