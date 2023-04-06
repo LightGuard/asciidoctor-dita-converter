@@ -12,7 +12,11 @@ require 'asciidoctor'
 require 'asciidoctor/dita/converter'
 
 class DitaConverterTestBase < Minitest::Test
-  attr_reader :asciidoctor_output, :expected_output, :full_output, :expected_attributes, :asciidoctor_attributes
+  attr_reader :asciidoctor_output
+  attr_reader :expected_output 
+  attr_reader :full_output 
+  attr_reader :expected_attributes
+  attr_reader :asciidoctor_attributes
 
   def setup
     super
