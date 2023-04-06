@@ -12,9 +12,7 @@ require 'asciidoctor'
 require 'asciidoctor/dita/converter'
 
 class DitaConverterTestBase < Minitest::Test
-  attr_reader :asciidoctor_output
-  attr_reader :expected_output
-  attr_reader :full_output
+  attr_reader :asciidoctor_output, :expected_output, :full_output, :expected_attributes, :asciidoctor_attributes
 
   def setup
     super
@@ -31,7 +29,10 @@ class DitaConverterTestBase < Minitest::Test
     raise NotImplementedError, 'No dita file created' unless dita_path.exist?
 
     output = Asciidoctor.convert adoc_path.cleanpath, safe: :safe, backend: 'dita', converter: ::Asciidoctor::Dita::Converter
-    @asciidoctor_output = (REXML::Document.new output, ignore_whitespace_nodes: :all, compress_whitespace: :all).simplify
+    rexml_context = {ignore_whitespace_nodes: :all, compress_whitespace: :all}
+    asciidoctor_document = REXML::Document.new output, rexml_context
+    @asciidoctor_output = asciidoctor_document.simplify
+    @asciidoctor_attributes = asciidoctor_document.simplify_attributes
 
     # Remove the ditamap if it's there
     ditamap = Pathname.new 'output.ditamap'
@@ -39,6 +40,7 @@ class DitaConverterTestBase < Minitest::Test
 
     @full_output = REXML::Document.new dita_path.read, ignore_whitespace_nodes: :all, compress_whitespace: :all
     @expected_output = @full_output.simplify '/topic/body'
+    @expected_attributes = @full_output.simplify_attributes '/topic/body'
 
     #Minitest::Test.make_my_diffs_pretty!
   end
@@ -82,6 +84,7 @@ module Asciidoctor
 
           define_method %(test_#{example_name}) do
             assert_equal expected_output, asciidoctor_output
+            assert_equal expected_attributes, asciidoctor_attributes
           end
         end
       end

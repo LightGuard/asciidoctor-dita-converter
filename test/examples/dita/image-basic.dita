@@ -33,7 +33,6 @@ image::sunset.jpg[role="right text-center"]
 <topic id="" xml:lang="en-us">
 <title></title>
 <body>
-<!-- TODO item being tested here -->
+<image href="sunset.jpg"><alt>sunset</alt></image>
 </body>
 </topic>
-
