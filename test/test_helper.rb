@@ -46,28 +46,6 @@ class DitaConverterTestBase < Minitest::Test
   end
 end
 
-# Create an eql? (or ==) method for REXML::Element
-#module REXML
-#  class Element
-#    def == other
-#      #puts "\nEquality testing"
-#      #p "#{other.name} - #{name}"
-#      #p "#{other.attributes} - #{attributes}"
-#      #p self.class == other.class 
-#      #p name == other.name 
-#      #p attributes == other.attributes
-#      #p children == other.children
-#      #p "#{children} - #{other.children}"
-#      #puts "\n"
-#      self.class == other.class && name == other.name && attributes == other.attributes && children == other.children
-#    end
-#
-#    def inspect
-#      p "<#{name} #{attributes}>#{children}</#{name}>"
-#    end
-#  end
-#end
-
 module Asciidoctor
   module Dita
     module Testing
