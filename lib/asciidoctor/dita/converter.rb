@@ -42,6 +42,58 @@ module Asciidoctor
         ERB.new(template_contents, trim_mode: '<>-').result b
       end
 
+      def convert_table node, opts = {}
+        result = []
+
+        result << %(<#{tag_name = node.title ? 'table' : 'simpletable'}#{common_attributes node.id}>)
+        result << %(<title>#{node.title}</title>) if tag_name == 'table'
+
+        result.concat simpletable(node, opts) if tag_name == 'simpletable'
+        result.concat table(node, opts) if tag_name == 'table'
+
+        result << %(</#{tag_name}>)
+        result.join LF
+      end
+
+      def table node, opts = {}
+        result = []
+        result.join LF
+      end
+
+      def simpletable node, opts = {}
+        result = []
+        node.rows.to_h.each do |section, rows|
+          next if rows.empty?
+          if section == :head
+            result << %(<sthead>)
+            rows.each do |cell|
+              result << %(<stentry>#{cell.text}</stentry>)
+            end
+            result << %(</sthead>)
+          else
+            rows.each do |row|
+              result << %(<strow>)
+              row.each do |cell|
+                cell_element = '<stentry>'
+                case cell.style
+                when :asciidoc
+                  cell_element += cell.content
+                when :literal
+                  cell_element += %(<tt>#{cell.text}</tt>)
+                when :header
+                  cell_element += %(<b>#{cell.text}</b>)
+                else
+                  cell_element += cell.text
+                end
+                result << cell_element + '</stentry>'
+              end
+              result << %(</strow>)
+            end
+          end
+        end
+        result
+      end
+
       def convert_outline node, opts = {}
         return unless node.sections?
 

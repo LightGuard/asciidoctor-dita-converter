@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="" xml:lang="en-us">
+<title></title>
+<body>
+<simpletable>
+<strow>
+<stentry>Cell in column 1, row 1</stentry>
+<stentry>Cell in column 2, row 1</stentry>
+</strow>
+<strow>
+<stentry>Cell in column 1, row 2</stentry>
+<stentry>Cell in column 2, row 2</stentry>
+</strow>
+</simpletable>
+</body>
+</topic>
