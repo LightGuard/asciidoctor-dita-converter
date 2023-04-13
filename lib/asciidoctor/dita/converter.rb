@@ -66,7 +66,8 @@ module Asciidoctor
           next if rows.empty?
           if section == :head
             result << %(<sthead>)
-            rows.each do |cell|
+            # Should only ever be one header row
+            rows[0].each do |cell|
               result << %(<stentry>#{cell.text}</stentry>)
             end
             result << %(</sthead>)

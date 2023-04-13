@@ -4,7 +4,7 @@ require:
 - rubocop-minitest
 - rubocop-rake
 AllCops:
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.0
   NewCops: enable
 Gemspec/DeprecatedAttributeAssignment:
   Enabled: true
@@ -165,6 +165,7 @@ Metrics/ClassLength:
   Enabled: false
 Metrics/CyclomaticComplexity:
   Enabled: true
+  Max: 13
 Metrics/MethodLength:
   Enabled: true
   Max: 50
